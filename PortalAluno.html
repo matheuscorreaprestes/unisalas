@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal do Aluno</title>
+    <link rel="stylesheet" href="css/viz.css">
+	<link rel="icon" href="favUni.png" size="32x32" type="image/x-icon">
+</head>
+<body>
+    <!-- Header with logo -->
+    <div class="header">
+        <img src="UniSalasLogo.png" alt="UniSalas">
+    </div>
+    
+    <!-- Selection section for day and pole -->
+    <section class="selection">
+        <div class="selection-container">
+            <label for="day">Escolha o dia da semana:</label>
+            <select name="day" id="day">
+                <option value="">Dia</option>
+                <option value="monday">Segunda-Feira</option>
+                <option value="tuesday">Terça-Feira</option>
+                <option value="wednesday">Quarta-Feira</option>
+                <option value="thursday">Quinta-Feira</option>
+                <option value="friday">Sexta-Feira</option>
+				<option value="friday">Sabádo</option>
+            </select>
+        </div>
+        <div class="selection-container">
+            <label for="pole">Escolha o polo:</label>
+            <select name="pole" id="pole">
+                <option value="">Polo</option>
+                <option value="ipolon">Ipolon</option>
+                <option value="sede-jk">Sede J.K</option>
+            </select>
+        </div>
+    </section>
+    
+    <!-- Main content with three columns inside containers -->
+    <div class="main-content">
+        <!-- First Column: Sala/Lab inside a container -->
+        <div class="container">
+            <div class="column">
+                <h2>Sala/Lab</h2>
+                <form>
+                    <input type="text" disabled>
+                    <input type="text" disabled>
+					<input type="text" disabled>
+                    <input type="text" disabled>
+					<input type="text" disabled>
+                    <input type="text" disabled>
+                    
+                </form>
+            </div>
+        </div>
+        <!-- Second Column: 1º Horário inside a container -->
+        <div class="container">
+            <div class="column">
+                <h2>1º Horário</h2>
+                <form>
+                    <input type="text" disabled>
+                    <input type="text" disabled>
+					<input type="text" disabled>
+                    <input type="text" disabled>
+					<input type="text" disabled>
+                    <input type="text" disabled>
+                    <!-- Add more inputs as needed -->
+                </form>
+            </div>
+        </div>
+        <!-- Third Column: 2º Horário inside a container -->
+        <div class="container">
+            <div class="column">
+                <h2>2º Horário</h2>
+                <form>
+                    <input type="text" disabled>
+                    <input type="text" disabled>
+					<input type="text" disabled>
+                    <input type="text" disabled>
+					<input type="text" disabled>
+                    <input type="text" disabled>
+                    <!-- Add more inputs as needed -->
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>

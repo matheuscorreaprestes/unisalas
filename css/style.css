@@ -1,0 +1,86 @@
+/* Estilos Gerais */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #f0f0f0; /* Cor de fundo neutra */
+}
+
+/* Header */
+.header {
+    width: 100%;
+    background-color: #FF914D; /* Cor laranja ajustada */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 220px; /* Altura da barra */
+}
+
+.header img {
+    width: 150px;
+}
+
+/* Área Principal */
+.main {
+    flex: 1; /* Permite que a área principal ocupe o restante do espaço */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 220px); /* Altura total menos a altura da header */
+}
+
+/* Estilos Específicos para a Tela de Login */
+.login-container {
+    width: 350px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin: auto; /* Adiciona margem automática para centralizar */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Inputs de Login */
+.login-container input[type="email"],
+.login-container input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Estilo Compartilhado para os Botões */
+.login-container .access-button,
+.login-container .aluno-button {
+    width: 100%; /* Ocupa toda a largura do contêiner */
+    max-width: 200px; /* Define um limite máximo para a largura dos botões */
+    padding: 10px;
+    margin: 10px auto; /* Centraliza o botão horizontalmente */
+    background-color: #FF914D; /* Mesma cor laranja */
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none; /* Remove sublinhado do link */
+    text-align: center;
+    display: block;
+    box-sizing: border-box; /* Garante que o padding não afete a largura total */
+}
+
+.login-container .access-button:hover,
+.login-container .aluno-button:hover {
+    background-color: #e07e32; /* Um laranja um pouco mais escuro para hover */
+}
+
+.login-container .aluno-button .icon {
+    margin-right: 8px;
+}

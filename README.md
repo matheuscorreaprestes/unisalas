@@ -10,22 +10,44 @@ com o xampp instalado, vamos instalar o MySQL workbenc, que é a ferramenta para
 vamos abrir o server do MySQL no workbench. 
 primeiro abra o Xampp control panel, algumas opções estarão disponiveis, clique em start a frente do MySQL, agora abra o workbench. clique no icone "+" de um nome a conexão, e verifique se a porta que está no xampp control panel é a mesma que esta em porta na nova conexão do workbench, se for clique em "Ok".
 
-agora no script adicione isto 
-CREATE DATABASE unisalas;
+agora no script adicione isto, vá selecionando cada bloco separado por uma linha, e rode o codigo, cada vez que seleciona uma linha.
+	CREATE DATABASE unisalas;
 
-USE unisalas;
+	USE unisalas;
 
-CREATE TABLE usuarios (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    email VARCHAR(255) NOT NULL UNIQUE,
-    senha VARCHAR(255) NOT NULL,
-    nome VARCHAR(255)
-);
+	CREATE TABLE usuarios (
+		id INT AUTO_INCREMENT PRIMARY KEY,
+		email VARCHAR(255) NOT NULL UNIQUE,
+		senha VARCHAR(255) NOT NULL,
+		nome VARCHAR(255)
+	);
 
--- Exemplo de inserção de um usuário
-INSERT INTO usuarios (email, senha, nome) VALUES ('coordenador@exemplo.com', '123456', 'Coordenador');
+	-- Exemplo de inserção de um usuário
+	INSERT INTO usuarios (email, senha, nome) VALUES ('coordenador@exemplo.com', '123456', 'Coordenador');
 
-isso garante que seu banco esteja correto. e que seja possivel realizar a validação do login, e que exista um perfil salvo. 
+	-- Tabela para armazenar as salas
+	CREATE TABLE salas (
+		id INT AUTO_INCREMENT PRIMARY KEY,
+		nome_sala VARCHAR(100) NOT NULL,
+		polo VARCHAR(50) NOT NULL
+	);
+
+
+	-- Tabela para armazenar as aulas e horários
+	CREATE TABLE aulas (
+		id INT AUTO_INCREMENT PRIMARY KEY,
+		dia_semana ENUM('monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday') NOT NULL,
+		primeiro_horario VARCHAR(100),
+		segundo_horario VARCHAR(100),
+		sala_id INT,
+		FOREIGN KEY (sala_id) REFERENCES salas(id)
+	);
+
+    --Visualiza a tabela aulas, para ver se está fazendo a inserção correta de dados passadas pelo cordenador.
+	select * from  aulas;
+    
+
+ 
 
 
 

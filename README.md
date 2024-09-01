@@ -24,30 +24,17 @@ agora no script adicione isto, vá selecionando cada bloco separado por uma linh
 
 	-- Exemplo de inserção de um usuário
 	INSERT INTO usuarios (email, senha, nome) VALUES ('coordenador@exemplo.com', '123456', 'Coordenador');
-
-	-- Tabela para armazenar as salas
-	CREATE TABLE salas (
-		id INT AUTO_INCREMENT PRIMARY KEY,
-		nome_sala VARCHAR(100) NOT NULL,
-		polo VARCHAR(50) NOT NULL
-	);
-
-
-	-- Tabela para armazenar as aulas e horários
-	CREATE TABLE aulas (
-		id INT AUTO_INCREMENT PRIMARY KEY,
-		dia_semana ENUM('monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday') NOT NULL,
-		primeiro_horario VARCHAR(100),
-		segundo_horario VARCHAR(100),
-		sala_id INT,
-		FOREIGN KEY (sala_id) REFERENCES salas(id)
-	);
-
+    
+    CREATE TABLE aulas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome_sala VARCHAR(255) NOT NULL,
+    polo VARCHAR(255) NOT NULL,
+    dia_semana VARCHAR(10) NOT NULL,
+    primeiro_horario VARCHAR(255) NOT NULL,
+    segundo_horario VARCHAR(255) NOT NULL
+);
     --Visualiza a tabela aulas, para ver se está fazendo a inserção correta de dados passadas pelo cordenador.
 	select * from  aulas;
-    
-
- 
 
 
 

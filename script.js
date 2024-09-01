@@ -38,3 +38,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Adicione um evento para o botão "Adicionar Linha", se necessário
 });
+
+
+document.getElementById('buscar').addEventListener('click', async () => {
+    const diaSemana = document.getElementById('day').value;
+    const polo = document.getElementById('pole').value;
+  
+    if (!diaSemana || !polo) {
+      alert('Por favor, selecione o dia e o polo.');
+      return;
+    }
+  
+    try {
+      const response = await fetch(`/buscar-aulas?dia_semana=${diaSemana}&polo=${polo}`);
+      const result = await response.json();
+  
+      if (result.success) {
+        const aulas = result.data;
+
+        // Limpa os campos antes de preencher com novos dados
+        document.querySelectorAll('.column input').forEach(input => input.value = '');
+
+        // Preenchendo os valores das aulas nos inputs correspondentes
+        aulas.forEach((aula, index) => {
+          if (index < 6) { // Limitando a quantidade de resultados exibidos
+            document.querySelectorAll('.column')[0].querySelectorAll('input')[index].value = aula.nome_sala || '';
+            document.querySelectorAll('.column')[1].querySelectorAll('input')[index].value = aula.primeiro_horario || '';
+            document.querySelectorAll('.column')[2].querySelectorAll('input')[index].value = aula.segundo_horario || '';
+          }
+        });
+  
+      } else {
+        alert('Erro ao buscar aulas. Por favor, tente novamente.');
+      }
+    } catch (error) {
+      console.error('Erro ao buscar aulas:', error);
+      alert('Erro ao buscar aulas. Por favor, tente novamente.');
+    }
+  });

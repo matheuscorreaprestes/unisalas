@@ -68,6 +68,25 @@ app.post('/salvar-aulas', async (req, res) => {
 });
 
 
+// Rota para buscar aulas com base no dia e no polo
+// Rota para buscar aulas com base no dia e no polo
+app.get('/buscar-aulas', async (req, res) => {
+  const { dia_semana, polo } = req.query;
+
+  try {
+    const [rows] = await promisePool.query(
+      `SELECT nome_sala, polo, dia_semana, primeiro_horario, segundo_horario FROM aulas WHERE dia_semana = ? AND polo = ?`,
+      [dia_semana, polo]
+    );
+
+    res.json({ success: true, data: rows });
+  } catch (err) {
+    console.error('Erro ao buscar aulas:', err);
+    res.status(500).json({ success: false, message: 'Erro ao buscar aulas.' });
+  }
+});
+
+
 // Iniciar o servidor
 app.listen(PORT, () => {
   console.log(`Servidor rodando em http://localhost:${PORT}`);

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -8,9 +9,14 @@
     <link rel="icon" href="favUni.png" size="32x32" type="image/x-icon">
 </head>
 <body>
+    <div id="access-popup" class="access-popup">
+        Acessos: 0
+    </div>
+
     <div class="header">
         <img src="UniSalasLogo.png" alt="UniSalas">
     </div>
+
     <div class="login-container">
         <form method="POST" action="/login">
             <input type="email" name="email" placeholder="EMAIL" required>
@@ -22,5 +28,7 @@
             SOU ALUNO
         </a>
     </div>
+
 </body>
+<script src="script.js"></script>
 </html>

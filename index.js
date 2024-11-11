@@ -4,6 +4,7 @@ const path = require('path');
 const mysql = require('mysql2');
 require('dotenv').config();
 
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -11,7 +12,7 @@ const PORT = process.env.PORT || 3000;
 const pool = mysql.createPool({
   host: process.env.DB_HOST || 'localhost',
   user: process.env.DB_USER || 'root',
-  password: process.env.DB_PASS || '',
+  password: process.env.DB_PASS || 'unisalas',
   database: process.env.DB_NAME || 'unisalas',
 });
 
@@ -68,6 +69,32 @@ app.post('/salvar-aulas', async (req, res) => {
 });
 
 
+app.get('/views', async (req, res) => {
+  try {
+    // Verificar se o contador existe
+    const [results] = await promisePool.query('SELECT * FROM views LIMIT 1');
+
+    if (results.length === 0) {
+      // Se o contador não existir, cria um com valor 0
+      await promisePool.query('INSERT INTO views (views) VALUES (0)');
+      res.json({ views: 0 });
+    } else {
+      // Incrementa o contador de acessos
+      let currentViews = results[0].views;
+      currentViews++;
+
+      await promisePool.query('UPDATE views SET views = ? WHERE id = ?', [currentViews, results[0].id]);
+      res.json({ views: currentViews });
+    }
+  } catch (err) {
+    console.error('Erro ao atualizar visualizações:', err);
+    res.status(500).json({ message: 'Erro ao atualizar visualizações' });
+  }
+});
+
+
+
+
 // Rota para buscar aulas com base no dia e no polo
 // Rota para buscar aulas com base no dia e no polo
 app.get('/buscar-aulas', async (req, res) => {
@@ -86,8 +113,12 @@ app.get('/buscar-aulas', async (req, res) => {
   }
 });
 
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'Login.html'));
+});
+
 
 // Iniciar o servidor
-app.listen(PORT, () => {
-  console.log(`Servidor rodando em http://localhost:${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Servidor rodando em http://0.0.0.0:${PORT}`);
 });

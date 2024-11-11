@@ -84,3 +84,15 @@ body {
 .login-container .aluno-button .icon {
     margin-right: 8px;
 }
+
+
+.access-popup {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    padding: 10px;
+    background-color: #ff6347;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+}

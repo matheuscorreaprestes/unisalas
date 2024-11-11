@@ -40,19 +40,29 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+    document.addEventListener('DOMContentLoaded', () => {
+      fetch('/views')
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById('access-popup').innerText = `Acessos: ${data.views}`;
+        })
+        .catch(error => console.error('Erro ao buscar acessos:', error));
+    });
+
+
 document.getElementById('buscar').addEventListener('click', async () => {
-    const diaSemana = document.getElementById('day').value;
-    const polo = document.getElementById('pole').value;
-  
+    const diaSemana = document.getElementById('dia-semana').value;
+    const polo = document.getElementById('polo').value;
+
     if (!diaSemana || !polo) {
       alert('Por favor, selecione o dia e o polo.');
       return;
     }
-  
+
     try {
       const response = await fetch(`/buscar-aulas?dia_semana=${diaSemana}&polo=${polo}`);
       const result = await response.json();
-  
+
       if (result.success) {
         const aulas = result.data;
 
@@ -67,7 +77,7 @@ document.getElementById('buscar').addEventListener('click', async () => {
             document.querySelectorAll('.column')[2].querySelectorAll('input')[index].value = aula.segundo_horario || '';
           }
         });
-  
+
       } else {
         alert('Erro ao buscar aulas. Por favor, tente novamente.');
       }

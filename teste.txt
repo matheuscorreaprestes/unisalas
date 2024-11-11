@@ -1,0 +1,142 @@
+programa {
+    inteiro caminho1 = 0
+    inteiro caminho2 = 0
+    inteiro caminho3 = 0
+    inteiro pontos = 0
+}
+1. Declaração de variáveis: Aqui, quatro variáveis inteiras são declaradas: `caminho1`, `caminho2`, e `caminho3`, usadas para rastrear se o jogador já escolheu esses caminhos; e `pontos`, que armazena a pontuação acumulada pelo jogador.
+
+funcao inicio() {
+    se(caminho1 == 1 e caminho2 == 1 e caminho3 == 1) {
+        escreva("Parabéns aventureiro, você terminou sua exploração e conseguiu ", pontos, " pontos \n") 
+    }
+}
+2. Função `inicio`: Este trecho inicia a função principal do jogo. Ele verifica se todos os três caminhos foram explorados (caminho1, caminho2, e caminho3 iguais a 1). Se sim, uma mensagem congratulando o jogador e mostrando sua pontuação é exibida.
+
+    senao {
+        inteiro caminho //declaração de variavel, nesse caso é um número inteiro e o nome da variavel é caminho
+    }
+3. Caso contrário: Se nem todos os caminhos foram explorados, a variável `caminho` é declarada, que armazenará a escolha do jogador.
+
+    escreva("Você é um explorador corajoso que se aventura em uma misteriosa Floresta Sussurrante em busca de tesouros lendários e segredos perdidos \n")
+    escreva("Ao adentrar na floresta, você se depara com três caminhos diferentes \n")
+    escreva("1. O caminho das sombras \n")
+    escreva("2. O caminho da luz \n")
+    escreva("3. O caminho das criaturas \n")
+    escreva("Escolha um caminho (1,2 ou 3) : ")
+    leia(caminho) //O programa vai ler qual o caminho o usuário escolheu, e armazenar na variável caminho
+4. Introdução ao jogo: O jogador recebe uma introdução sobre o contexto da aventura, seguida da descrição dos três caminhos. O programa então solicita que o jogador escolha um dos caminhos e armazena essa escolha na variável `caminho`.
+
+    escolha(caminho) //Aqui o programa verifica qual o número escolhido pelo usuário, cada número deve retornar uma função.
+    {
+        caso 1:
+            se(caminho1 == 1) {
+                escreva("Parece que você já foi por este caminho. Por favor escolha outro caminho \n")
+                inicio()
+            } senao {
+                caminho_da_sombras()
+                pare
+            }
+        caso 2:
+            se(caminho2 == 1) {
+                escreva("Parece que você já foi por este caminho. Por favor escolha outro caminho \n")
+                inicio()
+            } senao {
+                caminho_da_luz()
+                pare
+            }
+        caso 3:
+            se(caminho3 == 1) {
+                escreva("Parece que você já foi por este caminho. Por favor escolha outro caminho \n")
+                inicio()
+            } senao {
+                caminho_das_criaturas()
+                pare
+            }
+        caso contrario: //caso contrario significa que qualquer resposta que não seja 1,2 ou 3 retorna essa mensagem de erro.
+            escreva ("Caminho inválido. Por favor, escolha um caminho válido. \n")
+            leia(caminho)
+    }
+}
+5. Escolha do caminho: A estrutura de controle `escolha` verifica qual caminho o jogador escolheu:
+   - Para cada caso (1, 2, ou 3), verifica se o caminho já foi explorado. Se sim, exibe uma mensagem pedindo para escolher outro caminho e reinicia o jogo.
+   - Se o caminho não foi explorado, chama a função correspondente ao caminho escolhido.
+   - O caso contrário lida com entradas inválidas.
+
+funcao caminho_da_sombras() {
+    caminho1 = 1 
+    escreva("Você escolheu o caminho das sombras \n")
+    escreva("Este caminho é cercado por árvores antigas e sombrias, com raios de lua penetrando entre os galhos. Parece ser o caminho mais misterioso e perigoso da floresta. \n")
+    escreva("O jogador encontra uma criatura mágica guardiã do caminho, que exige um enigma para deixá-lo passar. O enigma é: 'Quem sou eu? Tenho olhos, mas não vejo. Tenho boca, mas não falo. O que sou?' \n ")
+    cadeia decisao //É uma declaração de variável, cadeia é quando você precisa armazenar palavras ou uma grande quantidade de caracteres. e decisao é o nome da variável.
+    leia(decisao)
+
+    se(decisao == "caveira") { // "==" verifica se a palavra armazenada na variável decisao é igual a caveira, caso não seja, ele é redirecionado para senao.
+        limpa() //limpa tudo o que estava escrito no console
+        escreva("Parabéns!!! Você acertou a resposta e como recompensa descobriu um baú \n")
+        escreva("E dentro deste baú há uma gema preciosa que vale 100 pontos! \n")
+        inteiro pontos1 = 100
+        pontos = pontos + pontos1
+        inicio()
+    } senao {
+        limpa()
+        escreva("Infelizmente esta não é a resposta correta, por favor retorne para o início da trilha! \n") // o \n serve para quebrar a linha
+        inicio()
+    }
+}
+6. Função `caminho_da_sombras`: Aqui, o jogador escolhe o caminho das sombras. Ele é apresentado a um enigma que precisa resolver para prosseguir:
+   - Se o jogador responder corretamente, ganha 100 pontos e é direcionado de volta ao início.
+   - Se errar, recebe uma mensagem de erro e também é enviado de volta ao início.
+
+funcao caminho_da_luz() {
+    caminho2 = 1
+    escreva("Você escolheu o caminho da luz \n")
+    escreva("Este caminho é iluminado por raios de sol que filtram entre as copas das árvores. Parece ser o caminho mais seguro e reconfortante da floresta. \n")
+    escreva("O jogador encontra uma ponte quebrada sobre um rio turbulento. Ele deve decidir se tentará atravessar a ponte quebrada ou procurará um desvio seguro. \n")
+    cadeia decisao 
+    leia(decisao)
+
+    se(decisao == "atravessar") {
+        limpa()
+        escreva("Uau você foi corajoso e atravessou a ponte! \n")
+        escreva("Graças à sua coragem você encontrou uma fonte que restaura 50 pontos de saúde e te dá 50 pontos!! \n")
+        inteiro pontos1 = 50
+        pontos = pontos + pontos1
+        inicio()
+    } senao {
+        limpa()
+        escreva("Hum você é um jogador cauteloso, e não quis atravessar a ponte. Então melhor retornar ao início da trilha, e escolher outros caminhos")
+        inicio()
+    }
+}
+7. Função `caminho_da_luz`: Nesta função, o jogador escolhe o caminho da luz. Ele enfrenta uma escolha sobre atravessar uma ponte:
+   - Se optar por atravessar, ganha 50 pontos e retorna ao início.
+   - Se decidir não atravessar, é enviado de volta ao início com uma mensagem.
+
+funcao caminho_das_criaturas() {
+    caminho3 = 1
+    escreva("Você escolheu o caminho das criaturas \n")
+    escreva("Este caminho é repleto de sons estranhos e pegadas misteriosas no chão. Parece ser o caminho mais imprevisível e enigmático da floresta. \n")
+    escreva("O jogador se depara com uma criatura mágica adormecida bloqueando o caminho. Ele deve decidir se tentará contornar a criatura com cuidado ou acordá-la para passar. \n")
+    cadeia decisao
+    leia(decisao)
+
+    se(decisao == "contornar") {
+        limpa()
+        escreva("Você foi cauteloso e decidiu contornar a criatura, uma sábia decisão \n")
+        escreva("Graças à sua decisão, você encontra uma árvore encantada que te concede um poder de camuflagem e 75 pontos")
+        inteiro pontos1 = 75
+        pontos = pontos + pontos1
+        inicio()
+    } senao {
+        limpa()
+        escreva("Ah não a criatura acabou acordando. \n")
+        escreva("É melhor correr para salvar a sua vida!!!")
+        inicio()
+    }
+}
+8. Função `caminho_das_criaturas`: O jogador escolhe este caminho e se depara com uma criatura mágica. Ele deve decidir como agir:
+   - Se decidir contornar a criatura, recebe 75 pontos e retorna ao início.
+   - Se acordar a criatura, ele é alertado sobre o perigo e enviado de volta ao início.
+
+
